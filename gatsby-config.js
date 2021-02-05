@@ -1,96 +1,105 @@
-require(`dotenv`).config({
-    path: `.env`,
-});
-
-const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE;
+const metaConfig = require('./gatsby-meta-config')
 
 module.exports = {
-    siteMetadata: {
-        // Used for the title template on pages other than the index site
-        siteTitle: `Hue5`,
-        // Default title of the page
-        siteTitleAlt: `Hue5`,
-        // Can be used for e.g. JSONLD
-        siteHeadline: `Hue5`,
-        // Will be used to generate absolute URLs for og:image etc.
-        siteUrl: `https://minimal-blog.lekoarts.de`,
-        // Used for SEO
-        siteDescription: `Learning every moment`,
-        // Will be set on the <html /> tag
-        siteLanguage: `kr`,
-        // Used for og:image and must be placed inside the `static` folder
-        siteImage: `/banner.jpg`,
-        // Twitter Handle
-        author: `@hyes5_`,
+  siteMetadata: metaConfig,
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
+      },
     },
-    plugins: [
-        {
-            resolve: `@lekoarts/gatsby-theme-minimal-blog`,
-            // See the theme's README for all available options
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/__about`,
+        name: `about`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-katex`,
             options: {
-                navigation: [
-                    {
-                        title: `Blog`,
-                        slug: `/blog`,
-                    },
-                    {
-                        title: `About`,
-                        slug: `/about`,
-                    },
-                ],
-                externalLinks: [
-                    {
-                        name: `Github`,
-                        url: `https://github.com/hyesungoh/`,
-                    },
-                    {
-                        name: `Instagram`,
-                        url: `https://www.instagram.com/hyes5_/`,
-                    },
-                ],
+              strict: `ignore`,
             },
-        },
-        {
-            resolve: `gatsby-plugin-google-analytics`,
+          },
+          {
+            resolve: `gatsby-remark-images`,
             options: {
-                trackingId: process.env.GOOGLE_ANALYTICS_ID,
+              maxWidth: 1200,
+              linkImagesToOriginal: false,
             },
-        },
-        `gatsby-plugin-sitemap`,
-        {
-            resolve: `gatsby-plugin-manifest`,
+          },
+          {
+            resolve: `gatsby-remark-images-medium-zoom`,
             options: {
-                name: `Hue5`,
-                short_name: `Hue5-blog`,
-                description: `Learning every moment`,
-                start_url: `/`,
-                background_color: `#fff`,
-                theme_color: `#C5CFDA`,
-
-                display: `standalone`,
-                icons: [
-                    {
-                        src: `/android-chrome-192x192.png`,
-                        sizes: `192x192`,
-                        type: `image/png`,
-                    },
-                    {
-                        src: `/android-chrome-512x512.png`,
-                        sizes: `512x512`,
-                        type: `image/png`,
-                    },
-                ],
+              margin: 36,
+              scrollOffset: 0,
             },
-        },
-        `gatsby-plugin-offline`,
-        `gatsby-plugin-netlify`,
-        shouldAnalyseBundle && {
-            resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
             options: {
-                analyzerMode: `static`,
-                reportFilename: `_bundle.html`,
-                openAnalyzer: false,
+              wrapperStyle: `margin-bottom: 1.0725rem`,
             },
-        },
-    ].filter(Boolean),
-};
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              inlineCodeMarker: '%',
+            },
+          },
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+          `gatsby-remark-autolink-headers`,
+          `gatsby-remark-emoji`,
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: metaConfig.ga,
+        head: true,
+        anonymize: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: metaConfig.title,
+        short_name: metaConfig.title,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: metaConfig.icon,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-feed`,
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-lodash`,
+    `gatsby-plugin-sitemap`,
+  ],
+}
