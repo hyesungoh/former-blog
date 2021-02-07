@@ -1,6 +1,6 @@
 ---
 title: 'BOJ 4485 - Python'
-date: 2020-1-14 12:21:13
+date: 2021-1-14 12:21:13
 category: 'Algorithm'
 draft: false
 ---
