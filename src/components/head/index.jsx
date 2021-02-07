@@ -50,6 +50,17 @@ export function Head({ description, lang, meta, keywords, title }) {
                 name: `twitter:description`,
                 content: metaDescription,
               },
+              // <meta name="google-site-verification" content="TpgX1yd61yWDUFez8gaV_YNawIMGHQeuFrcMwlpFoQA" />
+              // <meta name="naver-site-verification" content="968a626a941888fb56ef18bda8cb843e154a1e7d" />
+
+              {
+                name: `google-site-verification`,
+                content: `TpgX1yd61yWDUFez8gaV_YNawIMGHQeuFrcMwlpFoQA`,
+              },
+              {
+                name: `naver-site-verification`,
+                content: `968a626a941888fb56ef18bda8cb843e154a1e7d`,
+              },
             ]
               .concat(
                 keywords.length > 0
