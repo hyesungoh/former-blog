@@ -1,7 +1,7 @@
 ---
-title: '[LikeAmazingLion] Refactoring Log'
+title: '[Like Amazing Lion] Refactoring Log'
 date: 2021-02-13 00:24:00
-category: 'Python'
+category: 'Project'
 draft: false
 ---
 
