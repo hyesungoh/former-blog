@@ -1,6 +1,6 @@
 module.exports = {
   title: `hyesungoh`,
-  description: `Blog posted about ...`,
+  description: `Learning every moment`,
   author: `hyesungoh`,
   introduction: `Learning every moment`,
   siteUrl: `https://www.hyesungoh.xyz/`, // Your blog site url
