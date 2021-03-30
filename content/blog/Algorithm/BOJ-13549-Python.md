@@ -4,7 +4,7 @@ date: 2020-10-23 12:21:13
 category: 'Algorithm'
 draft: false
 ---
-[BOJ 1697](../master/python/BOJ_1697.py)의 변형 문제. 기존 좌표 x*2에는 1초가 추가됐으나 이번 문제에서는 초가 추가되지 않는다. 문제에서 n이 k의 좌표까지 가는 가장 빠른 시간을 요구하기 때문에 queue에 추가할 때 왼쪽에 추가하여 우선도를 높여 풀었다.
+[BOJ 1697](../master/python/BOJ_1697.py)의 변형 문제. 기존 좌표 x\*2에는 1초가 추가됐으나 이번 문제에서는 초가 추가되지 않는다. 문제에서 n이 k의 좌표까지 가는 가장 빠른 시간을 요구하기 때문에 queue에 추가할 때 왼쪽에 추가하여 우선도를 높여 풀었다.
 ```python
 from collections import deque
 
