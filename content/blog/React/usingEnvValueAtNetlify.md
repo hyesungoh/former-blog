@@ -1,11 +1,9 @@
 ---
-title: 'axios와 fetch의 차이점'
-date: 2021-02-09 20:24:00
+title: 'React에서 Netlify Environment Variables (환경 변수) 사용하는 방법'
+date: 2021-04-28 20:24:00
 category: 'React'
 draft: false
 ---
-
-# React에서 Netlify Environment Variables (환경 변수) 사용하는 방법
 
 Firebase를 이용한 CRA 앱을 Netlify를 통해 배포했으나,
 배포 환경에서 dotenv와 gitignore를 사용한 config 파일을 이용한 환경변수가 undefined로
