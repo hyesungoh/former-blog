@@ -30,6 +30,7 @@ draft: false
 #### 오픈소스 뜯어보기
 
 - 작은 것부터 남이 쓴 코드 보는 법 연습
+- 추천) Strapi, Mattermost, Redux-thunk, Lodash
 
 #### 결국은 브라우저 위에서 동작
 
