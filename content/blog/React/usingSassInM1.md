@@ -1,11 +1,9 @@
 ---
-title: ''
+title: 'M1 Mac node-sass 오류'
 date: 2021-06-22 20:24:00
 category: 'React'
 draft: false
 ---
-
-## Mac m1 node-sass 오류
 
 >TypeError: Node Sass does not yet support your current environment: OSX Unsupported architecture (arm64) with Unsupported runtime (93)  
 
