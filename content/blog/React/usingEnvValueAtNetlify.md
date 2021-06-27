@@ -22,9 +22,9 @@ Netlify Site settings > Build & deploy > Environment의 **Environment variables*
 Root 디렉토리에 scripts 폴더, create-env.js 파일을 생성합니다.
 
 ```js
-const fs = require('fs')
-const dotenv = require('dotenv')
-dotenv.config()
+const fs = require('fs');
+const dotenv = require('dotenv');
+dotenv.config();
 
 fs.writeFileSync(
   './.env',
@@ -32,7 +32,7 @@ fs.writeFileSync(
 REACT_APP_SOMETHINGYOUWANT=${process.env.REACT_APP_SOMETHINGYOUWANT}
 SOMETHING_YOU_WANT=${process.env.SOMETHING_YOU_WANT}
 ...`
-)
+);
 ```
 
 그 후 해당 파일을 위와 같이 작성합니다.
