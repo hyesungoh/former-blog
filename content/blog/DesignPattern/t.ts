@@ -1,81 +1,64 @@
-interface Aggerate {
-  iterator: () => myIterator;
+abstract class Product {
+  public abstract use(): void;
 }
 
-interface myIterator {
-  hasNext: () => boolean;
-  next: () => object;
+abstract class Factory {
+  public create = (owner: string): Product => {
+    const p: Product = this.createProduct(owner);
+    this.registerProduct(p);
+    return p;
+  };
+
+  protected abstract createProduct(owner: string): Product;
+  // protected createProduct = (owner: string): Product => {
+  //   return new Product(owner);
+  // };
+
+  protected abstract registerProduct(product: Product): void;
 }
 
-class Book {
-  private name: string;
-  constructor(name: string) {
-    this.name = name;
+class IDCard extends Product {
+  private owner: string;
+
+  constructor(owner: string) {
+    super();
+    console.log(`${owner}의 카드를 만듭니다.`);
+    this.owner = owner;
   }
 
-  getName = (): string => {
-    return this.name;
+  public use = (): void => {
+    console.log(`${this.owner}의 카드를 사용합니다.`);
+  };
+
+  public getOwner = (): string => {
+    return this.owner;
   };
 }
 
-class BookShelf implements Aggerate {
-  private books: Book[];
-  private last: number;
+class IDCardFactory extends Factory {
+  private owners: string[] = [];
 
-  constructor(maxsize: number) {
-    this.books = new Book[maxsize]();
-  }
-
-  getBookAt = (index: number): Book => {
-    return this.books[index];
+  protected createProduct = (owner: string): Product => {
+    return new IDCard(owner);
   };
 
-  appendBook = (book: Book) => {
-    this.books[this.last] = book;
-    this.last++;
+  protected registerProduct = (product: Product): void => {
+    this.owners.push((product as IDCard).getOwner());
   };
 
-  getLength = () => {
-    return this.last;
-  };
-
-  iterator = () => {
-    return new BookShelfIterator(this);
-  };
-}
-
-class BookShelfIterator implements myIterator {
-  private bookShelf: BookShelf;
-  private index: number;
-
-  constructor(bookShelf: BookShelf) {
-    this.bookShelf = bookShelf;
-    this.index = 0;
-  }
-
-  hasNext = () => {
-    return this.index < this.bookShelf.getLength() ? true : false;
-  };
-
-  next = () => {
-    const book: Book = this.bookShelf.getBookAt(this.index);
-    this.index++;
-    return book;
+  public getOwners = (): string[] => {
+    return this.owners;
   };
 }
 
 class Main {
   main = () => {
-    const bookShelf: BookShelf = new BookShelf(4);
-    bookShelf.appendBook(new Book('Apple'));
-    bookShelf.appendBook(new Book('Banana'));
-    bookShelf.appendBook(new Book('Chicken'));
-    bookShelf.appendBook(new Book('Diamond'));
-
-    const it: myIterator = bookShelf.iterator();
-    while (it.hasNext()) {
-      const book: Book = it.next() as Book;
-      console.log(book.getName());
-    }
+    const factory: Factory = new IDCardFactory();
+    const card1: Product = factory.create('김철수');
+    const card2: Product = factory.create('김철수');
+    const card3: Product = factory.create('김철수');
+    card1.use();
+    card2.use();
+    card3.use();
   };
 }
