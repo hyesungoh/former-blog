@@ -1,5 +1,5 @@
 ---
-title: 'M1 Mac sharp 설치 오류'
+title: 'React Typescript, Cannot find name MediaRecorder'
 date: 2021-08-01 20:24:00
 category: 'React'
 draft: false
