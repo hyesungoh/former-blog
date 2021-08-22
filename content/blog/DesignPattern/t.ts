@@ -1,64 +1,48 @@
-abstract class Product {
-  public abstract use(): void;
+abstract class Builder {
+  public abstract makeTitle(title: String): void;
+  public abstract makeString(str: String): void;
+  public abstract makeItems(items: String[]): void;
+  public abstract close(): void;
 }
 
-abstract class Factory {
-  public create = (owner: string): Product => {
-    const p: Product = this.createProduct(owner);
-    this.registerProduct(p);
-    return p;
-  };
+class Director {
+  private builder: Builder;
 
-  protected abstract createProduct(owner: string): Product;
-  // protected createProduct = (owner: string): Product => {
-  //   return new Product(owner);
-  // };
-
-  protected abstract registerProduct(product: Product): void;
-}
-
-class IDCard extends Product {
-  private owner: string;
-
-  constructor(owner: string) {
-    super();
-    console.log(`${owner}의 카드를 만듭니다.`);
-    this.owner = owner;
+  public constructor(builder: Builder) {
+    this.builder = builder;
   }
 
-  public use = (): void => {
-    console.log(`${this.owner}의 카드를 사용합니다.`);
-  };
-
-  public getOwner = (): string => {
-    return this.owner;
-  };
-}
-
-class IDCardFactory extends Factory {
-  private owners: string[] = [];
-
-  protected createProduct = (owner: string): Product => {
-    return new IDCard(owner);
-  };
-
-  protected registerProduct = (product: Product): void => {
-    this.owners.push((product as IDCard).getOwner());
-  };
-
-  public getOwners = (): string[] => {
-    return this.owners;
+  // 문서 구축
+  public construct = (): void => {
+    this.builder.makeTitle('안녕하세요'); // 타이틀
+    this.builder.makeString('아침과 낮에'); // 문자열
+    this.builder.makeItems(['좋은 아침입니다', '안녕하세요']); // 개별 항목
+    this.builder.close(); // 문서 완성
   };
 }
 
-class Main {
-  main = () => {
-    const factory: Factory = new IDCardFactory();
-    const card1: Product = factory.create('김철수');
-    const card2: Product = factory.create('김철수');
-    const card3: Product = factory.create('김철수');
-    card1.use();
-    card2.use();
-    card3.use();
+class TextBuilder extends Builder {
+  private buffer: string[] = [];
+  public makeTitle = (title: String): void => {
+    this.buffer.push('=================\n');
+    this.buffer.push(title + '\n');
+  };
+
+  public makeString = (str: String): void => {
+    this.buffer.push(str + '\n');
+  };
+
+  public makeItems = (items: String[]): void => {
+    for (let i = 0; i < items.length; i++) {
+      this.buffer.push(items[i] + '\n');
+    }
+  };
+
+  public close = (): void => {
+    this.buffer.push('=================\n');
+  };
+
+  public getResult = (): String => {
+    return this.buffer.join('');
   };
 }
