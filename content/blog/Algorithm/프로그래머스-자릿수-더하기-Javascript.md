@@ -1,5 +1,5 @@
 ---
-title: '프로그래머스-자릿수더하기 - Javascript'
+title: '프로그래머스-자릿수-더하기 - Javascript'
 date: 2021-8-16 12:21:13
 category: 'Algorithm'
 draft: false
