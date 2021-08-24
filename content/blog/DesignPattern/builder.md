@@ -75,12 +75,21 @@ public class Director {
 
 ```ts
 // Typescript
-public construct = (): void => { // 문서 구축
+class Director {
+  private builder: Builder;
+
+  public constructor(builder: Builder) {
+    this.builder = builder;
+  }
+
+  // 문서 구축
+  public construct = (): void => {
     this.builder.makeTitle('안녕하세요'); // 타이틀
     this.builder.makeString('아침과 낮에'); // 문자열
     this.builder.makeItems(['좋은 아침입니다', '안녕하세요']); // 개별 항목
     this.builder.close(); // 문서 완성
-};
+  };
+}
 ```
 
 `Director` 클래스는 `Builder` 클래스로 선언되어 있는 메소드를 사용해서 `문서`를 만듭니다.
@@ -284,7 +293,7 @@ OOP에서 "누가 무엇을 알고 있을까?", "어떤 클래스가 어떤 메�
 
 ## 설계 시에 결정할 수 있는 것, 결정할 수 없는 것
 
-Builder 클래스는 문서를 ㅊ구축할 때 필요 충분한 메소드군을 선언해야 한다.
+Builder 클래스는 문서를 구축할 때 필요 충분한 메소드군을 선언해야 한다.
 
 왜냐하면 Director 클래스에 주어진 도구는 Builder 클래스가 제공하는 도구이기 때문이다.
 
@@ -300,7 +309,7 @@ Builder 클래스는 문서를 ㅊ구축할 때 필요 충분한 메소드군을
 
 - Composite
 
-  Builder 패턴에 의해 만들어진 생성물은 Composite 패턴이 뙤는 경우가 있다.
+  Builder 패턴에 의해 만들어진 생성물은 Composite 패턴이 되는 경우가 있다.
 
 - Abstract Factory
 
