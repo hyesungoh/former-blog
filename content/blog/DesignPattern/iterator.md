@@ -135,7 +135,8 @@ class BookShelf implements Aggerate {
   private last: number;
 
   constructor(maxsize: number) {
-    this.books = new Book[maxsize]();
+    this.books = [];
+    this.last = 0;
   }
 
   getBookAt = (index: number): Book => {
