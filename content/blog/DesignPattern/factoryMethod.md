@@ -1,5 +1,5 @@
 ---
-title: 'Factory Method 패턴'
+title: 'Factory Method pattern with TypeScript'
 date: 2021-08-02 17:50:00
 category: 'DesignPattern'
 draft: false

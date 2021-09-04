@@ -1,5 +1,5 @@
 ---
-title: 'Iterator 패턴'
+title: 'Iterator pattern with TypeScript'
 date: 2021-07-19 17:50:00
 category: 'DesignPattern'
 draft: false

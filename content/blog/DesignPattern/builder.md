@@ -1,5 +1,5 @@
 ---
-title: 'Builder 패턴'
+title: 'Builder pattern with TypeScript'
 date: 2021-08-21 17:50:00
 category: 'DesignPattern'
 draft: false
