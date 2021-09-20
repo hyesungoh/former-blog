@@ -17,7 +17,7 @@ draft: false
 
 이론적인 부분은 약술하고 내가 React, TypeScript 환경에서 Intersection Observer를 사용하는 방법을 공유하고자 한다.
 
-_[Scroll listener와 Intersection Observer의 performance 비교 결과](https://itnext.io/1v1-scroll-listener-vs-intersection-observers-469a26ab9eb6)_
+[Scroll listener와 Intersection Observer의 performance 비교 결과](https://itnext.io/1v1-scroll-listener-vs-intersection-observers-469a26ab9eb6)
 
 ## 첫 번째 접근
 
@@ -92,15 +92,36 @@ if (!target) return;
 
 하지만 `사용하는곳.ts`에서 ref에 초기 값이 null로써, 반환되어 감지되지 못한다.
 
+내가 이해한 Cycle을 간단히 기술하자면 아래와 같다.
+
+1. ref 객체 생성 (null)
+2. custom hook 실행 (반환되어 감지 못함)
+3. ref.current 객체 할당
+4. custom hook 재실행 X
+
 > 그럼 useEffect dependency에 target.current 를 걸면 되지 않나 ?
 
-결론부터 말하자면 안된다. current 값이 할당되어 재실행되어도, Layout이 그러졌다는 것을 뜻하진 않기 때문이라고 한다.
+결론부터 말하자면 안된다. 공식문서에 따르면 `useRef`는 현재 참조 값의 변경 사항을 알리지 않아 `useEffect`가 트리거되지 않는다고 한다.
+
+[해당 공식 문서](https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node)
 
 ## 해결 방법
 
+위 공식 문서를 읽어보면 이미 해결 방법을 아시겠지만,
+
 React 공식문서는 ref가 설정, 해제되는 상황을 다룰 때 `Callback ref`라 불리는 방법을 제공한다.
 
-내 적용 방법은 다음과 같다.
+### 추가적으로
+
+`Ref object`와 `useEffect`에 관해서 다룬 내용의 주소는 다음과 같다.
+
+[Ref objects inside useEffect Hooks](https://medium.com/@teh_builder/ref-objects-inside-useeffect-hooks-eb7c15198780)
+
+해당 글의 작성자는 Facebook React Core Team이자 Redux, CRA등을 개발한 *Dan Abramov*에게 직접 아래와 같은 답변을 받았다고 한다.
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I think you want callback ref for that. You can’t have component magically react to ref changes because ref can go deep down and have independent lifecycle of the owner component.</p>&mdash; Dan (@dan_abramov) <a href="https://twitter.com/dan_abramov/status/1093497348913803265?ref_src=twsrc%5Etfw">February 7, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## 내 적용 방법
 
 - useIntersectionObserver.ts
 
