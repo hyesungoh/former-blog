@@ -252,12 +252,15 @@ Total Result :
 ## Strategy 패턴의 구성요소
 
 - **Strategy**
+
   Strategy는 전략을 이용하기 위한 인터페이스를 결정한다. 예제 프로그램에서는 `Strategy` 인터페이스가 담당하였다.
 
 - **ConcreteStrategy**
+
   위 Strategy 인터페이스를 구현한다. 여기에서 구체적인 전략을 실제로 개발하며, 예제 프로그램에서는 `WinningStrategy` 클래스와 `RandomStrategy` 클래스가 담당하였다.
 
 - **Context**
+
   Context는 Strategy를 이용하는 역할을 한다. ConcreteStrategy의 인스턴스를 가지고 있으며 필요에 따라 그것을 사용한다. 예제 프로그램에서는 `Player` 클래스가 담당하였다.
 
 <div align="center">
