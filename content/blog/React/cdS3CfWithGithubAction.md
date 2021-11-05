@@ -43,6 +43,14 @@ jobs:
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
 
+      - name: Generate environment variables # 환경변수 설정
+        run: |
+          echo "REACT_APP_API_URL=$REACT_APP_API_URL" >> .env.production
+          echo "REACT_APP_GA_TRACKING_ID=$REACT_APP_GA_TRACKING_ID" >> .env.production
+        env:
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+          REACT_APP_GA_TRACKING_ID: ${{ secrets.REACT_APP_GA_TRACKING_ID }}
+
       - name: Install Dependencies # dependency 설치
         run: npm install
 
@@ -101,7 +109,7 @@ jobs:
 
 환경 변수의 경우 하단에 `${{ env.foo }}`와 같이 사용 가능하여 구성해 두었습니다.
 
-## branch, npm Steps
+## Checkout, Cashing
 
 ```yml
 steps:
@@ -116,12 +124,6 @@ steps:
       restore-keys: |
         ${{ runner.OS }}-build-
         ${{ runner.OS }}-
-
-  - name: Install Dependencies # dependency 설치
-    run: npm install
-
-  - name: Build Application # build
-    run: npm run build
 ```
 
 `steps`는 순차적으로 이루어지는 task들 입니다.
@@ -139,7 +141,39 @@ steps:
 
 reference로는 [Github Actions의 cache repo](https://github.com/actions/cache)를 참고하시면 좋을 것 같습니다.
 
+## Env
+
+저는 유출되면 안되는 것들을 `.env` 파일을 이용해 관리하곤 합니다.
+
+당연히 gitignore를 활용해 github에는 올려두지 않아, 해당 파일의 내용을 사용하기 위해서는 `배포 단계에서 생성`이 필요합니다.
+
+```yml
+- name: Generate environment variables # 환경변수 설정
+  run: |
+    echo "REACT_APP_API_URL=$REACT_APP_API_URL" >> .env.production
+    echo "REACT_APP_GA_TRACKING_ID=$REACT_APP_GA_TRACKING_ID" >> .env.production
+  env:
+    REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+    REACT_APP_GA_TRACKING_ID: ${{ secrets.REACT_APP_GA_TRACKING_ID }}
+```
+
+`echo` 명령을 사용하여 새로운 파일을 생성, 추가합니다.
+
+이 때 .env에 작성된 내용을 `github secrets`을 이용해 관리합니다.
+
+github secrets에 관한 내용은 아래에서 자세히 다루도록 하겠습니다.
+
+## Install, Build
+
 그 다음으로 필요한 패키지 설치, build를 진행합니다.
+
+```yml
+- name: Install Dependencies # dependency 설치
+  run: npm install
+
+- name: Build Application # build
+  run: npm run build
+```
 
 ## AWS 계정 설정
 
@@ -157,8 +191,6 @@ reference로는 [Github Actions의 cache repo](https://github.com/actions/cache)
 해당 구문은 이미 작성된 `action`을 본인이 작성한 job에 추가하는 것입니다.
 
 AWS 계정 설정 또한 `aws-actions/configure-aws-credentials@v1` action을 이용합니다.
-
-`${{ secrets.~~~ }}`의 경우 게시글 마지막에 다루도록 하겠습니다.
 
 ## S3 배포
 
@@ -199,9 +231,9 @@ repo의 settings 탭을 누른 후,
 
 사진의 왼쪽 하단 `Secrets` 클릭 후 새로운 `repository secret`을 생성해주시면 됩니다.
 
-제 상황에서는 `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`를 이름으로 해당 값들을 적어주시면 됩니다.
+위 예제에서의 `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`와 `.env`에서 사용한 값들을 적어주었습니다.
 
-> 해당 값들의 IAM은 S3, Cloudfront에 대한 권한이 있어야 합니다.
+> AWS 값들의 IAM은 S3, Cloudfront에 대한 권한이 있어야 합니다.
 
 ## 적용 모습
 
