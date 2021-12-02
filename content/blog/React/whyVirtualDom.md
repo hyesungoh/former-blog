@@ -99,6 +99,8 @@ Svelte는 Virtual DOM을 사용하지 않고 유사한 성능, 개발 생산성�
 
 > 개인적으로 Svelte의 개발자 경험이 매우 좋았어서, 앞으로 생태계가 더욱 커졌으면 하는 바램이 있습니다.
 
+부족한 글 읽어주셔서 감사드리며, 피드백 부탁드리겠습니다. 감사합니다.
+
 ## 참고
 
 - [React - Virtual DOM](https://ko.reactjs.org/docs/faq-internals.html)
@@ -112,3 +114,5 @@ Svelte는 Virtual DOM을 사용하지 않고 유사한 성능, 개발 생산성�
   and Svelte - Åbo Akademi University](https://www.doria.fi/bitstream/handle/10024/177433/levlin_mattias.pdf?sequence=2&isAllowed=y)
 
 - [Vitual DOM is pure overhead - Rich Harris](https://svelte.dev/blog/virtual-dom-is-pure-overhead)
+
+- [Vercel welcomes Rich Harris, creator of Svelte ](https://vercel.com/blog/vercel-welcomes-rich-harris-creator-of-svelte)
