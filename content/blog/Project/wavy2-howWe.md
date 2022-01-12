@@ -1,5 +1,5 @@
 ---
-title: '[WAVY] 2. 우리는 어떻게 만들까? 협업편'
+title: '[WAVY] 2. 우리는 어떻게 만들까?'
 date: 2022-01-09 00:02:00
 category: 'Project'
 draft: false
