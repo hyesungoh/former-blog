@@ -30,5 +30,5 @@ Wavy의 기획부터 어떻게 개발하였는 지, 어떤 이슈를 겪었는 �
 ## 프로젝트 결과물
 
 - [Web Client 깃허브](https://github.com/EO2-WAVY/WavyFrontend)
-- [시연 영상](https://drive.google.com/file/d/1AAZCyyrcsokhkVQlJFc6zzLnKSMQpR3D/view?usp=sharing)
+- [시연 영상](https://www.youtube.com/watch?v=MYtoSIxjS7Y)
 - [홍보 동영상](https://drive.google.com/file/d/1AAZCyyrcsokhkVQlJFc6zzLnKSMQpR3D/view?usp=sharing)
