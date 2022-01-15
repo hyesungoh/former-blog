@@ -28,7 +28,7 @@ export default class HTML extends React.Component {
           ></script>
           <script>
             window.dataLayer = window.dataLayer || []; function gtag()
-            {dataLayer.push(arguments)}
+            {window.dataLayer.push(arguments)}
             gtag('js', new Date()); gtag('config', 'G-JDE9EP03CJ');
           </script>
         </head>
