@@ -22,15 +22,6 @@ export default class HTML extends React.Component {
           ></script>
 
           {/* for google analytics */}
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-JDE9EP03CJ"
-          ></script>
-          <script>
-            window.dataLayer = window.dataLayer || []; function gtag()
-            {window.dataLayer.push(arguments)}
-            gtag('js', new Date()); gtag('config', 'G-JDE9EP03CJ');
-          </script>
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
