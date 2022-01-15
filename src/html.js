@@ -20,6 +20,17 @@ export default class HTML extends React.Component {
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7865364121078598"
             crossorigin="anonymous"
           ></script>
+
+          {/* for google analytics */}
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-JDE9EP03CJ"
+          ></script>
+          <script>
+            window.dataLayer = window.dataLayer || []; function gtag()
+            {dataLayer.push(arguments)}
+            gtag('js', new Date()); gtag('config', 'G-JDE9EP03CJ');
+          </script>
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
