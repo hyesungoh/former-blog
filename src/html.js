@@ -20,8 +20,6 @@ export default class HTML extends React.Component {
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7865364121078598"
             crossorigin="anonymous"
           ></script>
-
-          {/* for google analytics */}
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
