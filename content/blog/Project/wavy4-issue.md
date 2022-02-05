@@ -127,4 +127,6 @@ embed 옵션을 허용한 동영상 중 Youtube 링크만 있으면 모든 영�
 - <a href="https://www.youtube.com/watch?v=MYtoSIxjS7Y" target="_blank">시연 영상</a>
 - <a href="https://drive.google.com/file/d/1AAZCyyrcsokhkVQlJFc6zzLnKSMQpR3D/view?usp=sharing" target="_blank">홍보 동영상</a>
 
+<br/>
+
 ![단체사진](https://user-images.githubusercontent.com/26461307/149136852-a926397d-9261-48d7-a40d-5b6f57aea67e.jpeg)
