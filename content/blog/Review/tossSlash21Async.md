@@ -1,5 +1,5 @@
 ---
-title: 'Toss SLASH 21 - 프론트엔드 웹 서비스에서 우아하게 비동기 처리하기 후기'
+title: 'Toss SLASH 21 - 프론트엔드 웹 서비스에서 우아하게 비동기 처리하기 정리'
 date: 2021-05-04 20:24:00
 category: 'Review'
 draft: false
@@ -7,7 +7,7 @@ draft: false
 
 ![스크린샷 2021-05-04 오전 1 53 21](https://user-images.githubusercontent.com/26461307/116906670-878c3600-ac7b-11eb-8e5a-7779faf5b884.png)
 
-토스 SLASH 21의 `프론트엔드 웹 서비스에서 우아하게 비동기 처리하기`라는 주제로 박서진님이 발표하신 내용을 기록
+토스 SLASH 21의 `프론트엔드 웹 서비스에서 우아하게 비동기 처리하기`라는 주제로 박서진님이 발표하신 내용을 정리한 내용입니다.
 
 [토스 SLASH 21 주소](https://toss.im/slash-21)
 
@@ -17,18 +17,18 @@ draft: false
 // 💩
 function getBazFromX(x) {
   if (x === undefined) {
-    return undefined
+    return undefined;
   }
 
   if (x.foo === undefined) {
-    return undefined
+    return undefined;
   }
 
   if (x.foo.bar === undefined) {
-    return undefined
+    return undefined;
   }
 
-  return x.foo.bar.baz
+  return x.foo.bar.baz;
 }
 ```
 
@@ -39,7 +39,7 @@ function getBazFromX(x) {
 ```js
 // 👍
 function getBazFromX(x) {
-  return x?.foo?.bar?.baz
+  return x?.foo?.bar?.baz;
 }
 ```
 
@@ -56,19 +56,19 @@ function getBazFromX(x) {
 function fetchAccounts(callback) {
   fetchUserEntity((err, user) => {
     if (err != null) {
-      callback(err, null)
-      return
+      callback(err, null);
+      return;
     }
 
     fetchUserAccount(user.no, (err, accounts) => {
       if (err != null) {
-        callback(err, null)
-        return
+        callback(err, null);
+        return;
       }
 
-      callback(null, accounts)
-    })
-  })
+      callback(null, accounts);
+    });
+  });
 }
 ```
 
@@ -79,9 +79,9 @@ function fetchAccounts(callback) {
 ```js
 // 👍
 async function fetchAccounts() {
-  const user = await fetchUserEntity()
-  const accounts = await fetchUserAccounts(user.no)
-  return accounts
+  const user = await fetchUserEntity();
+  const accounts = await fetchUserAccounts(user.no);
+  return accounts;
 }
 ```
 
@@ -110,12 +110,12 @@ Promise를 반환하는 함수를 React Hook의 인자로 넘기고, Promist 상
 ```jsx
 function Profile() {
   const foo = useAsyncValue(() => {
-    return fetchFoo()
-  })
+    return fetchFoo();
+  });
 
-  if (foo.error) return <div>로딩에 실패했습니다.</div>
-  if (!foo.data) return <div>로딩중입니다 ...</div>
-  return <div>{foo.data.name}님 안녕하세요!</div>
+  if (foo.error) return <div>로딩에 실패했습니다.</div>;
+  if (!foo.data) return <div>로딩중입니다 ...</div>;
+  return <div>{foo.data.name}님 안녕하세요!</div>;
 }
 ```
 
@@ -129,24 +129,24 @@ function Profile() {
 // 💩
 function Profile() {
   const foo = useAsyncValue(() => {
-    return fetchFoo()
-  })
+    return fetchFoo();
+  });
 
   const bar = useAsyncValue(() => {
     if (foo.error || !foo.data) {
-      return undefined
+      return undefined;
     }
 
-    return fetchBar(foo.data)
-  })
+    return fetchBar(foo.data);
+  });
 
-  if (foo.error || bar.error) return <div>로딩에 실패했습니다.</div>
-  if (!foo.data || !bar.data) return <div>로딩중입니다 ...</div>
+  if (foo.error || bar.error) return <div>로딩에 실패했습니다.</div>;
+  if (!foo.data || !bar.data) return <div>로딩중입니다 ...</div>;
   return (
     <div>
       {foo.data}, {bar.data}
     </div>
-  )
+  );
 }
 ```
 
@@ -154,9 +154,9 @@ function Profile() {
 
 ```jsx
 async function fetchFooBar() {
-  const foo = await fetchFoo()
-  const bar = await fetchBar(foo)
-  return bar
+  const foo = await fetchFoo();
+  const bar = await fetchBar(foo);
+  return bar;
 }
 ```
 
@@ -182,15 +182,15 @@ React의 실험 버전에서만 사용 가능
 
 ```jsx
 function FooBar() {
-  const foo = useAsyncValue(() => fetchFoo())
-  const bar = useAsyncValue(() => fetchBar(foo))
+  const foo = useAsyncValue(() => fetchFoo());
+  const bar = useAsyncValue(() => fetchBar(foo));
 
   return (
     <div>
       {foo}
       {bar}
     </div>
-  )
+  );
 }
 ```
 
