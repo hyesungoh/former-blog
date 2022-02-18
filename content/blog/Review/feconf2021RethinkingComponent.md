@@ -5,7 +5,7 @@ category: 'Review'
 draft: false
 ---
 
-_본 게시물은 [FE CONF 2021의 '컴포넌트, 다시 생각하기'](https://www.youtube.com/watch?v=HYgKBvLr49c)를 듣고 정리한 내용입니다._
+_본 게시물은 원지혁 님이 발표하신 [FE CONF 2021의 '컴포넌트, 다시 생각하기'](https://www.youtube.com/watch?v=HYgKBvLr49c)를 듣고 정리한 내용입니다._
 
 ![feconf 2021](https://user-images.githubusercontent.com/26461307/154068327-be828984-6634-4bca-919d-029e3f254eb8.jpg)
 
