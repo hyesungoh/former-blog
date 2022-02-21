@@ -5,27 +5,56 @@ category: 'Project'
 draft: false
 ---
 
-## [BOJ grading automation](https://github.com/hyesungoh/BOJ_grading_automation)
+학과 조교를 수행하며 개발한, **백준 채점 자동화 프로그램** 입니다.
 
-백준 채점 자동화 프로그램
+## 개발도구
 
-### Development tool
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white" alt="python"/>
 
-> <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"/> <img src="https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=Selenium&logoColor=white"/>
+<img src="https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=Selenium&logoColor=white" alt="selenium"/>
 
-### Result
+파이썬과 함께 동적 웹 크롤링을 위해 Selenium을 사용하였습니다.
 
-#### [Youtube Link](https://youtu.be/jMBtbVg0Abw)
+## 해결하고자 한 문제
 
-Selenium을 이용하여 동적 크롤링
+제가 처한 상황은 다음과 같습니다.
 
-![스크린샷 2021-03-24 오전 1 07 14](https://user-images.githubusercontent.com/26461307/112181418-c7550c00-8c3f-11eb-87e3-271008b5f301.png)
+1. 매주 2문제씩 백준 출처의 알고리즘 문제를 제출
+2. 해당 강의 수강생은 약 40명
+3. 백준 정답 기준으로 채점
+4. 채점 결과를 바탕으로 교내 시스템에 입력
 
-채점결과 CSV 파일로 저장
+위 과정을 수작업으로 수행하게될 시 매주 1시간 30분 이상의 시간이 소모되어
 
-![스크린샷 2021-03-24 오전 1 08 18](https://user-images.githubusercontent.com/26461307/112181432-ca4ffc80-8c3f-11eb-845d-4d7cc88318f2.png)
+최소한 3번까지 자동화를 통해 시간을 단축시키고자 하였습니다.
 
-### Develop Log
+## 결과
+
+> 결과물 [Youtube Link](https://youtu.be/jMBtbVg0Abw)
+
+- 동적 크롤링
+
+![동적 크롤링](https://user-images.githubusercontent.com/26461307/112181418-c7550c00-8c3f-11eb-87e3-271008b5f301.png)
+
+- 채점결과 CSV 파일로 저장
+
+![채점결과](https://user-images.githubusercontent.com/26461307/112181432-ca4ffc80-8c3f-11eb-845d-4d7cc88318f2.png)
+
+위에서 기술한 것처럼 Python과 Selenium을 사용하여 구현하였습니다.
+
+먼저 해당 프로그램의 확정성을 고려해 `이름(학번) - 백준 ID`로 이루어진 csv 파일을 읽었으며, 동적 크롤링을 통해 매 학생들의 결과를 실시간으로 확인할 수 있게 하였습니다.
+
+위 `4번`의 입력을 위해 최종적으로 csv 파일로써 결과를 저장하는 방식으로 구현하였습니다.
+
+해당 프로그램을 개발함으로써 매주 최대 1시간 20분, 한 학기에 약 18시간을 절약할 수 있었습니다.
+
+<details>
+
+<summary>
+
+## 👉 구현 과정 보기
+
+</summary>
 
 - `이름(학번), 백준 ID`로 이루어진 CSV 파일을 읽어 딕셔너리화하여 반환
 
@@ -98,13 +127,19 @@ def write_csv():
 
 ```
 
-### Issue
+</details>
+
+## 겪었던 이슈
 
 - Selenium chrome driver version
   - 로컬 [chrome 버전에 맞는 driver](https://chromedriver.chromium.org/downloads)을 업데이트하여 수정
 
-### Extend
+## 마치며
 
-- LMS상 채점을 자동화
-  - LMS 제출 결과에 "면접"이 있을 시 만점 처리
-  - 채점 로그 작성
+제가 직접 놓인 상황을 자동화 프로그램이란 종목으로 개선하면서 또 다른 개발의 재미를 느낄 수 있었습니다.
+
+최대한 빠르게 개발하고자 날개발을 한 감이 없진 않지만, 큰 오류가 발견되지 않고 조교 역할을 마칠 때까지 요긴하게 사용하여 기분 좋았던 경험이였습니다.
+
+제가 절약한 시간은 약 18시간 정도지만, 앞으로 같은 과목의 조교 역할을 수행할 후임자분들의 시간 또한 절약할 수 있지 않을까라는 생각에 인계할 계획입니다.
+
+#### [깃허브에서 보기](https://github.com/hyesungoh/BOJ_grading_automation)
