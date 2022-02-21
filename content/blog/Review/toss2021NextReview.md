@@ -5,7 +5,7 @@ category: 'Review'
 draft: false
 ---
 
-![스크린샷 2021-08-14 오후 9 36 24](https://user-images.githubusercontent.com/26461307/129446556-51ac5424-2669-43fc-9f84-a096cf35d118.png)
+![toss next 2021](https://user-images.githubusercontent.com/26461307/129446556-51ac5424-2669-43fc-9f84-a096cf35d118.png)
 
 `소프트웨어 마에스트로` 활동때문에 정신없이 보내고 있는 요즘이지만,
 

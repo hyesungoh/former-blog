@@ -5,7 +5,7 @@ category: 'Review'
 draft: false
 ---
 
-![스크린샷 2021-05-04 오전 1 53 21](https://user-images.githubusercontent.com/26461307/116906670-878c3600-ac7b-11eb-8e5a-7779faf5b884.png)
+![toss slash 21](https://user-images.githubusercontent.com/26461307/116906670-878c3600-ac7b-11eb-8e5a-7779faf5b884.png)
 
 토스 SLASH 21의 `프론트엔드 웹 서비스에서 우아하게 비동기 처리하기`라는 주제로 박서진님이 발표하신 내용을 정리한 내용입니다.
 

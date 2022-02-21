@@ -5,7 +5,7 @@ category: 'Review'
 draft: false
 ---
 
-![스크린샷 2021-05-04 오전 1 53 21](https://user-images.githubusercontent.com/26461307/116906670-878c3600-ac7b-11eb-8e5a-7779faf5b884.png)
+![toss slash 21](https://user-images.githubusercontent.com/26461307/116906670-878c3600-ac7b-11eb-8e5a-7779faf5b884.png)
 
 토스 SLASH 21의 `실무에서 바로 쓰는 Frontend Clean Code`라는 주제로 진유림님이 발표하신 내용을 정리한 내용입니다.
 
